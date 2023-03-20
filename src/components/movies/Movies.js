@@ -1,9 +1,9 @@
-import React from "react"
+import React from 'react';
 
-export const Movies = ()=>{
-    return (
-        <div>
-            <input type='text'/>
-        </div>
-    )
-}
+export const Movies = () => {
+  return (
+    <div>
+      <input type="text" />
+    </div>
+  );
+};
