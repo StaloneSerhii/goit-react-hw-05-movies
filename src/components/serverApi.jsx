@@ -22,5 +22,5 @@ async function fetchDetalsFilm(id) {
     console.error(error);
   }
 }
-
 export { fetchData, fetchDetalsFilm };
+// в
