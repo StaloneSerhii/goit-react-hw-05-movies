@@ -9,7 +9,7 @@ const DetalFilms = () => {
 
   useEffect(() => {
     fetchDetalsFilm(movieId).then(resp => setFilmInfo(resp.data));
-  }, []);
+  }, [movieId]);
 
   return (
     <div>
