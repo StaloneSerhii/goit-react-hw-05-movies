@@ -12,15 +12,17 @@ export const Home = () => {
 
   return (
     <div>
+      <ul>
       {films.map(({ title, id }) => {
         return (
-          <div>
-            <Link key={id} to={`/movies/${id}`}>
+          <li key={id}>
+            <Link  to={`/movies/${id}`}>
               {title}
             </Link>
-          </div>
+          </li>
         );
       })}
+      </ul>
     </div>
   );
 };

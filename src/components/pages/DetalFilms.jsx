@@ -13,6 +13,7 @@ const DetalFilms = () => {
 
   return (
     <div>
+      <Link to="/">Cast</Link>
       <img
         src={`https://image.tmdb.org/t/p/original/${filmInfo.backdrop_path}`}
         alt={filmInfo.title}

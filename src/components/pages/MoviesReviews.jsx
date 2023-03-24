@@ -9,11 +9,13 @@ export const MoviesReviews = () => {
   useEffect(() => {
     fetchReviews(movieId).then(({ results }) => setRewiev(results));
   }, [movieId]);
-
+;
+console.log(rewiev.length);
   return (
     <div>
       <ul>
-        {rewiev.map(({ author, content, credit_id, avatar_path }) => {
+        {rewiev.length > 1 ? 
+        rewiev.map(({ author, content, credit_id, avatar_path }) => {
           return (
             <li key={credit_id}>
               <h2>{author}</h2>
@@ -24,7 +26,7 @@ export const MoviesReviews = () => {
               />
             </li>
           );
-        })}
+        }) : <h2>немає відгуків</h2> }
       </ul>
     </div>
   );
