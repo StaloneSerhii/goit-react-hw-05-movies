@@ -9,24 +9,26 @@ export const MoviesReviews = () => {
   useEffect(() => {
     fetchReviews(movieId).then(({ results }) => setRewiev(results));
   }, [movieId]);
-;
-console.log(rewiev.length);
+  console.log(rewiev.length);
   return (
     <div>
       <ul>
-        {rewiev.length > 1 ? 
-        rewiev.map(({ author, content, credit_id, avatar_path }) => {
-          return (
-            <li key={credit_id}>
-              <h2>{author}</h2>
-              <p>{content}</p>
-              <img
-                src={`https://image.tmdb.org/t/p/original/${avatar_path}`}
-                alt="avatar"
-              />
-            </li>
-          );
-        }) : <h2>немає відгуків</h2> }
+        {rewiev.length > 1 ? (
+          rewiev.map(({ author, content, credit_id, avatar_path }) => {
+            return (
+              <li key={credit_id}>
+                <h2>{author}</h2>
+                <p>{content}</p>
+                <img
+                  src={`https://image.tmdb.org/t/p/original/${avatar_path}`}
+                  alt="avatar"
+                />
+              </li>
+            );
+          })
+        ) : (
+          <h2>немає відгуків</h2>
+        )}
       </ul>
     </div>
   );

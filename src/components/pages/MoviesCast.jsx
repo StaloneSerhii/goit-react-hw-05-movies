@@ -8,7 +8,7 @@ export const MoviesCast = () => {
 
   useEffect(() => {
     fetchCast(movieId).then(({ cast }) => setCast(cast));
-  }, []);
+  }, [movieId]);
   return (
     <div>
       <ul>
