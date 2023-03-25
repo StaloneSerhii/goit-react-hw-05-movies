@@ -21,16 +21,22 @@ export const Movies = () => {
     setValueInput(quryMov);
   };
 
+const submitForm =(e)=>{
+e.preventDefault()
+setSerch(valueInput)
+setValueInput({})
+
+}
+
+
   return (
     <div>
+      <form onSubmit={submitForm}>
       <input type="text" onChange={updateQueryString} />
-      <button
-        onClick={() => {
-          setSerch(valueInput);
-        }}
-      >
+      <button type='submit'>
         send
       </button>
+      </form>
       <ul>
         {findNameFilms.length > 1 ? (
           getMovies.map(({ title, id }) => {
