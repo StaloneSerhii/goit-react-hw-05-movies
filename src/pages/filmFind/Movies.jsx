@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import { searchMovieId } from '../serverApi';
-
+import { searchMovieId } from '../../components/serverApi';
+import PropTypes from 'prop-types';
+import './findFilm-styled.css';
 export const Movies = () => {
   const [serch, setSerch] = useSearchParams();
   const [getMovies, setGetMovies] = useState([]);
@@ -21,28 +22,29 @@ export const Movies = () => {
     setValueInput(quryMov);
   };
 
-const submitForm =(e)=>{
-e.preventDefault()
-setSerch(valueInput)
-setValueInput({})
-
-}
-
-
+  const submitForm = e => {
+    e.preventDefault();
+    setSerch(valueInput);
+    setValueInput({});
+  };
   return (
-    <div>
+    <div className="find__mov">
       <form onSubmit={submitForm}>
-      <input type="text" onChange={updateQueryString} />
-      <button type='submit'>
-        send
-      </button>
+        <input type="text" onChange={updateQueryString} className="inputFilm" />
+        <button type="submit" className="btn__find">
+          send
+        </button>
       </form>
-      <ul>
+      <ul className="mov__list">
         {findNameFilms.length > 1 ? (
           getMovies.map(({ title, id }) => {
             return (
               <li key={id}>
-                <Link state={{ from: location }} to={`/movies/${id}`}>
+                <Link
+                  state={{ from: location }}
+                  to={`/movies/${id}`}
+                  className="mov__link"
+                >
                   {title}
                 </Link>
               </li>
@@ -55,3 +57,9 @@ setValueInput({})
     </div>
   );
 };
+
+Movies.prototype = {
+  resp: PropTypes.array.isRequired,
+};
+
+export default Movies;

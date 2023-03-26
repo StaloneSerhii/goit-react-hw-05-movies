@@ -1,7 +1,7 @@
 import { fetchCast } from 'components/serverApi';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 export const MoviesCast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
@@ -29,3 +29,9 @@ export const MoviesCast = () => {
     </div>
   );
 };
+
+MoviesCast.prototype = {
+  cast: PropTypes.object.isRequired,
+};
+
+export default MoviesCast;

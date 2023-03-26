@@ -1,6 +1,7 @@
 import { fetchReviews } from 'components/serverApi';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 export const MoviesReviews = () => {
   const [rewiev, setRewiev] = useState([]);
@@ -9,14 +10,14 @@ export const MoviesReviews = () => {
   useEffect(() => {
     fetchReviews(movieId).then(({ results }) => setRewiev(results));
   }, [movieId]);
-  console.log(rewiev.length);
+
   return (
     <div>
       <ul>
         {rewiev.length > 1 ? (
-          rewiev.map(({ author, content, credit_id, avatar_path }) => {
+          rewiev.map(({ author, content, id, avatar_path }) => {
             return (
-              <li key={credit_id}>
+              <li key={id}>
                 <h2>{author}</h2>
                 <p>{content}</p>
                 <img
@@ -33,3 +34,9 @@ export const MoviesReviews = () => {
     </div>
   );
 };
+
+MoviesReviews.prototype = {
+  results: PropTypes.object.isRequired,
+};
+
+export default MoviesReviews;
